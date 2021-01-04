@@ -1,15 +1,14 @@
-from math import sqrt
+import math
 
 
 def sol_equa(n):
-    result = []
-    x = n
-    for x in range(n, 0, -1):
-        y = (sqrt(abs(x ** 2 - n))) // 2
-        if x ** 2 - 4 * y ** 2 == n:
-            integers = [int(x), int(y)]
-            result.append(integers)
-    return result
+    res = []
+    for i in range(1, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            j = n // i
+            if (i + j) % 2 == 0 and (j - i) % 4 == 0:
+                x = (i + j) // 2
+                y = (j - i) // 4
+                res.append([x, y])
 
-
-sol_equa(90005)
+    return res
